@@ -4,7 +4,7 @@ module.exports={
     // 建置的模式
     mode:"development", // 預設 production
     // 入口
-    entry:"./src/app.js",
+    entry:"./src/index.js",
     // 輸出
     output:{
         filename:"bundle.js",
