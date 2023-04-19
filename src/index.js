@@ -9,9 +9,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-<BrowserRouter>
+  <BrowserRouter>
     <Routes>
-        <Route path="/" element={<App />}/>
+      <Route path="/" element={<App />} />
     </Routes>
-</BrowserRouter>
+  </BrowserRouter>
 );

@@ -1,13 +1,20 @@
-*{
-    box-sizing: border-box;
-    }
-    body{
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #F1F5FF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
+@font-face {
+  font-family: "Interstate";
+  src: url("./font/interstate-regular.ttf");
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #f1f5ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Interstate";
+}
