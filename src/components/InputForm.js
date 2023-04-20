@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./InputForm.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 
 const InputForm = () => {
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const [eye, setEye] = useState(false);
+  const [reveal, setReveal] = useState(false);
   const [check, setCheck] = useState(false);
   const [sign1, setSign1] = useState(false);
   const [sign2, setSign2] = useState(false);
@@ -22,26 +25,35 @@ const InputForm = () => {
   function passwordChange(pass) {
     setPassword(pass.target.value);
   }
+  function eyeChange(eye) {
+    setEye(eye.target.tagName);
+  }
   function checkChange(check) {
     setCheck(!check.target.defaultChecked);
   }
   useEffect(() => {
-    if (password.length>7) {
+    if (password.length > 7) {
       setSign1(true);
-    }
-    else{
+    } else {
       setSign1(false);
     }
   }, [password]);
   useEffect(() => {
     let format = /\d+/;
-    if (password.match(format)){
+    if (password.match(format)) {
       setSign2(true);
-    }
-    else{
+    } else {
       setSign2(false);
     }
   }, [password]);
+  useEffect(() => {
+    if (eye == "svg" || eye == "path") {
+      setReveal(!reveal);
+      setEye(false);
+    } else {
+      setEye(false);
+    }
+  }, [eye]);
 
   return (
     <div className="FormBlock">
@@ -90,27 +102,69 @@ const InputForm = () => {
       </div>
       <div className="FormBlock__line3">
         <div className="FormBlock__line3__pbox">
-          <input
-            className="FormBlock__line3__pbox__password"
-            type="password"
-            id="Password"
-            value={password}
-            onChange={passwordChange}
-            required
-          />
-          <label className="FormBlock__line3__pbox__plabel" htmlFor="Password">
-            Password
-          </label>
+          <div className="FormBlock__line3__pbox__left">
+            <input
+              className="FormBlock__line3__pbox__left__password"
+              type={reveal ? "text" : "password"}
+              id="Password"
+              value={password}
+              onChange={passwordChange}
+              required
+            />
+            <label
+              className="FormBlock__line3__pbox__left__plabel"
+              htmlFor="Password"
+            >
+              Password
+            </label>
+          </div>
+          <div className="FormBlock__line3__pbox__right">
+            <button
+              className="FormBlock__line3__pbox__right__icon"
+              type="button"
+              value={eye}
+              onClick={eyeChange}
+            >
+              <RemoveRedEyeOutlinedIcon
+                style={{ fontSize: "19px" }}
+                htmlColor={reveal ? "#3C71FF" : "#757575"}
+              />
+            </button>
+          </div>
         </div>
       </div>
-      <div className="FormBlock__line4">
+      <div
+        className={
+          "FormBlock__line4" + (reveal ? " FormBlock__line4--show" : "")
+        }
+      >
         <div className="FormBlock__line4__sign1">
-          <CheckCircleIcon style={{ fontSize: "11px" }} htmlColor={sign1 ? "#4AE7A5": "#ababab"}/>
-          <div className={"FormBlock__line4__sign1__word" + (sign1 ? " FormBlock__line4__sign1__word--black" : "")}>8 Characters min.</div>
+          <CheckCircleIcon
+            style={{ fontSize: "11px" }}
+            htmlColor={sign1 ? "#4AE7A5" : "#ababab"}
+          />
+          <div
+            className={
+              "FormBlock__line4__sign1__word" +
+              (sign1 ? " FormBlock__line4__sign1__word--black" : "")
+            }
+          >
+            8 Characters min.
+          </div>
         </div>
         <div className="FormBlock__line4__sign2">
-          <CheckCircleIcon style={{ fontSize: "11px" }} htmlColor={sign2 ? "#4AE7A5": "#ababab"}/>
-          <div className={"FormBlock__line4__sign2__word" + (sign2 ? " FormBlock__line4__sign2__word--black" : "")}>One number</div>
+          <CheckCircleIcon
+            style={{ fontSize: "11px" }}
+            htmlColor={sign2 ? "#4AE7A5" : "#ababab"}
+          />
+          <div
+            className={
+              "FormBlock__line4__sign2__word" +
+              (sign2 ? " FormBlock__line4__sign2__word--black" : "")
+            }
+          >
+            One number
+          </div>
         </div>
       </div>
       <div className="FormBlock__line5">
