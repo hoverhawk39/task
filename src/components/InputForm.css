@@ -159,6 +159,10 @@ input:valid ~ .FormBlock__line3__pbox__plabel {
   margin-left: 4px;
   color: #ababab;
 }
+.FormBlock__line4__sign1__word--black,
+.FormBlock__line4__sign2__word--black{
+    color: #000000;
+  }
 .FormBlock__line5 {
   grid-area: 5/2/6/3;
   display: flex;

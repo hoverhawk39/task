@@ -1,28 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./InputForm.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const InputForm = () => {
-  const [first, setFirst] = useState([""]);
-  const [last, setLast] = useState([""]);
-  const [email, setMail] = useState([""]);
-  const [password, setPassword] = useState([""]);
+  const [first, setFirst] = useState("");
+  const [last, setLast] = useState("");
+  const [email, setMail] = useState("");
+  const [password, setPassword] = useState("");
   const [check, setCheck] = useState(false);
-  function FirstNameChange(first) {
+  const [sign1, setSign1] = useState(false);
+  const [sign2, setSign2] = useState(false);
+  function firstNameChange(first) {
     setFirst(first.target.value);
   }
-  function LastNameChange(last) {
+  function lastNameChange(last) {
     setLast(last.target.value);
   }
-  function EmailChange(email) {
+  function emailChange(email) {
     setMail(email.target.value);
   }
-  function PasswordChange(pass) {
+  function passwordChange(pass) {
     setPassword(pass.target.value);
   }
-  function CheckChange(check) {
-    setCheck(!check);
+  function checkChange(check) {
+    setCheck(!check.target.defaultChecked);
   }
+  useEffect(() => {
+    if (password.length>7) {
+      setSign1(true);
+    }
+    else{
+      setSign1(false);
+    }
+  }, [password]);
+  useEffect(() => {
+    let format = /\d+/;
+    if (password.match(format)){
+      setSign2(true);
+    }
+    else{
+      setSign2(false);
+    }
+  }, [password]);
+
   return (
     <div className="FormBlock">
       <div className="FormBlock__line1">
@@ -32,7 +52,7 @@ const InputForm = () => {
             type="text"
             id="FirstName"
             value={first}
-            onChange={FirstNameChange}
+            onChange={firstNameChange}
             required
           />
           <label className="FormBlock__line1__fbox__flabel" htmlFor="FirstName">
@@ -45,7 +65,7 @@ const InputForm = () => {
             type="text"
             id="LastName"
             value={last}
-            onChange={LastNameChange}
+            onChange={lastNameChange}
             required
           />
           <label className="FormBlock__line1__lbox__llabel" htmlFor="LastName">
@@ -60,7 +80,7 @@ const InputForm = () => {
             type="text"
             id="Email"
             value={email}
-            onChange={EmailChange}
+            onChange={emailChange}
             required
           />
           <label className="FormBlock__line2__ebox__elabel" htmlFor="Email">
@@ -75,7 +95,7 @@ const InputForm = () => {
             type="password"
             id="Password"
             value={password}
-            onChange={PasswordChange}
+            onChange={passwordChange}
             required
           />
           <label className="FormBlock__line3__pbox__plabel" htmlFor="Password">
@@ -85,12 +105,12 @@ const InputForm = () => {
       </div>
       <div className="FormBlock__line4">
         <div className="FormBlock__line4__sign1">
-          <CheckCircleIcon style={{ fontSize: "11px" }} />
-          <div className="FormBlock__line4__sign1__word">8 Characters min.</div>
+          <CheckCircleIcon style={{ fontSize: "11px" }} htmlColor={sign1 ? "#4AE7A5": "#ababab"}/>
+          <div className={"FormBlock__line4__sign1__word" + (sign1 ? " FormBlock__line4__sign1__word--black" : "")}>8 Characters min.</div>
         </div>
         <div className="FormBlock__line4__sign2">
-          <CheckCircleIcon style={{ fontSize: "11px" }} />
-          <div className="FormBlock__line4__sign2__word">One number</div>
+          <CheckCircleIcon style={{ fontSize: "11px" }} htmlColor={sign2 ? "#4AE7A5": "#ababab"}/>
+          <div className={"FormBlock__line4__sign2__word" + (sign2 ? " FormBlock__line4__sign2__word--black" : "")}>One number</div>
         </div>
       </div>
       <div className="FormBlock__line5">
@@ -101,7 +121,7 @@ const InputForm = () => {
               type="checkbox"
               id="check"
               defaultChecked={check}
-              onChange={CheckChange}
+              onChange={checkChange}
             />
             <span className="FormBlock__line5__box__check__span"></span>
           </label>
