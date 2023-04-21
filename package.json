@@ -9,7 +9,7 @@
     "start": "webpack-dev-server --open",
     "prettier": "prettier -w src/",
     "predelpoy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "build": "webpack"
   },
   "keywords": [],
