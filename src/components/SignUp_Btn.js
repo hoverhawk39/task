@@ -27,6 +27,10 @@ const SignUpButton = styled(Button)(({}) => ({
   "& .MuiButton-startIcon": {
     color: "#3C71FF",
   },
+  "@media (max-width: 417px)": {
+    width: "169px",
+    lineHeight: "15px",
+  },
 }));
 
 export const GoogleBtn = () => {

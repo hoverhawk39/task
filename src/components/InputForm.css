@@ -1,6 +1,6 @@
 .FormBlock {
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 105px 4fr 105px;
   grid-template-rows: auto auto auto auto auto auto auto;
 }
 .FormBlock__line1 {
@@ -9,7 +9,6 @@
   align-items: flex-end;
   justify-content: space-between;
   height: 73px;
-  /* border: 1px solid blue; */
 }
 .FormBlock__line1__fbox {
   position: relative;
@@ -68,7 +67,6 @@ input:valid ~ .FormBlock__line1__lbox__llabel {
   display: flex;
   align-items: center;
   height: 80px;
-  /* border: 1px solid blue; */
 }
 .FormBlock__line2__ebox {
   position: relative;
@@ -101,7 +99,6 @@ input:valid ~ .FormBlock__line2__ebox__elabel {
 .FormBlock__line3 {
   grid-area: 3/2/4/3;
   height: 48px;
-  /* border: 1px solid blue; */
 }
 .FormBlock__line3__pbox {
   display: flex;
@@ -154,7 +151,6 @@ input:valid ~ .FormBlock__line3__pbox__left__plabel {
   cursor: pointer;
 }
 .FormBlock__line4 {
-  /* border: 1px solid red; */
   height: 20px;
   grid-area: 4/2/5/3;
   display: none;
@@ -194,7 +190,6 @@ input:valid ~ .FormBlock__line3__pbox__left__plabel {
   display: flex;
   align-items: flex-end;
   height: 57px;
-  /* border: 1px solid blue; */
 }
 .FormBlock__line5__box {
   display: flex;
@@ -250,7 +245,6 @@ input:valid ~ .FormBlock__line3__pbox__left__plabel {
   display: flex;
   align-items: flex-end;
   height: 65px;
-  /* border: 1px solid blue; */
 }
 .FormBlock__line6__box {
   width: 100%;
@@ -272,7 +266,6 @@ input:valid ~ .FormBlock__line3__pbox__left__plabel {
   align-items: flex-end;
   justify-content: center;
   height: 32px;
-  /* border: 1px solid blue; */
 }
 .FormBlock__line7__box {
   font-size: 13px;
@@ -292,4 +285,38 @@ input:valid ~ .FormBlock__line3__pbox__left__plabel {
 }
 ::-ms-reveal {
   display: none;
+}
+@media screen and (max-width: 610px) {
+  .FormBlock {
+    grid-template-columns: 8px auto 8px;
+  }
+}
+@media screen and (max-width: 417px) {
+  .FormBlock {
+    width: 360px;
+  }
+  .FormBlock__line1 {
+    width: 344px;
+  }
+  .FormBlock__line1__fbox__fname {
+    width: 170px;
+  }
+  .FormBlock__line1__lbox__lname {
+    width: 170px;
+  }
+  .FormBlock__line2 {
+    width: 344px;
+  }
+  .FormBlock__line3 {
+    width: 344px;
+  }
+  .FormBlock__line5 {
+    width: 344px;
+  }
+  .FormBlock__line5__box__word {
+    width: 320px;
+  }
+  .FormBlock__line6 {
+    width: 344px;
+  }
 }

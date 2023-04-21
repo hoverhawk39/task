@@ -3,3 +3,13 @@
   height: 635px;
   background: #ffffff;
 }
+@media screen and (max-width: 610px) {
+  .base {
+    width: 417px;
+  }
+}
+@media screen and (max-width: 417px) {
+  .base {
+    width: 360px;
+  }
+}

@@ -1,5 +1,3 @@
-// console.log("Setup Environment 123");
-
 import "./index.css";
 import App from "./components/App";
 import React from "react";
