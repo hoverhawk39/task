@@ -10,11 +10,11 @@ https://git-scm.com/downloads
 
 `cd Documents/`
 
-**[STEP 4] run the following code in your ternimal to clone this git repository ("task") into your "Documents" folder**
+**[STEP 4] run the following code in your terminal to clone this git repository ("task") into your "Documents" folder**
 
 `git clone https://github.com/hoverhawk39/task.git`
 
-> now your "Douments" folder has a new folder named "task", which contains all the file of this project
+> now your "Documents" folder has a new folder named "task", which contains all the file of this project
 
 **[STEP 5] run the following code to go to the "task" folder**
 
